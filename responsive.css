@@ -1,0 +1,36 @@
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    width: 250px; /* Reduce width */
+    height: 350px; /* Reduce height */
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+  .container h2{
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 200px; /* Further reduce width */
+    height: 300px; /* Further reduce height */
+    font-size: 0.8rem; /* Further reduce font size */
+  }
+  .container h2{
+    font-size: 1rem;
+  }
+  form{
+    margin: 15px 0px 0px 0px;
+  }
+  .amount{
+    font-size: 0.8rem;
+  }
+  .dropdown i {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+

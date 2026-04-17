@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Premium currency converter with live rates, trends, favorites and offline support.">
+  <meta name="theme-color" content="#0b0f1a">
+  <title>Currency Converter Pro</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Global Finance</p>
+        <h1>Currency Converter Pro</h1>
+      </div>
+      <div class="header-actions">
+        <button id="installBtn" class="ghost hidden" type="button">Install App</button>
+        <button id="themeToggle" class="ghost" type="button" aria-label="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <section class="card converter-card">
+      <div class="field">
+        <label for="dataSource">Rate Source</label>
+        <select id="dataSource">
+          <option value="demo">Demo Data (No API)</option>
+          <option value="live">Live API</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="amount">Amount</label>
+        <div class="amount-row">
+          <input id="amount" type="number" min="0" step="any" value="100" placeholder="Enter amount">
+          <button id="voiceBtn" class="ghost tiny" type="button" title="Voice input">🎤</button>
+        </div>
+      </div>
+
+      <div class="currency-grid">
+        <div class="field">
+          <label for="fromCurrency">From</label>
+          <div class="select-row">
+            <input id="fromCurrency" list="currencyOptions" autocomplete="off" placeholder="Search currency (USD)">
+            <button id="favFromBtn" class="ghost tiny" type="button" title="Favorite source currency">☆</button>
+          </div>
+        </div>
+
+        <button id="swapBtn" class="swap-btn" type="button" aria-label="Swap currencies">↔</button>
+
+        <div class="field">
+          <label for="toCurrency">To</label>
+          <div class="select-row">
+            <input id="toCurrency" list="currencyOptions" autocomplete="off" placeholder="Search currency (PKR)">
+            <button id="favToBtn" class="ghost tiny" type="button" title="Favorite target currency">☆</button>
+          </div>
+        </div>
+      </div>
+
+      <datalist id="currencyOptions"></datalist>
+
+      <div class="result-wrap">
+        <p id="status" class="status">Ready</p>
+        <p id="result" class="result">100 USD = -- PKR</p>
+        <p id="rateInfo" class="rate-info">Rate: --</p>
+      </div>
+
+      <div class="actions">
+        <button id="convertBtn" type="button" class="primary">Convert</button>
+        <button id="copyBtn" type="button" class="ghost">Copy</button>
+        <button id="shareBtn" type="button" class="ghost">Share</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Multi-Currency Comparison</h2>
+      <p class="subtle">Convert your source amount into multiple currencies in one go.</p>
+      <div id="multiSelect" class="chips"></div>
+      <div id="comparisonResults" class="comparison-results"></div>
+    </section>
+
+    <section class="card">
+      <div class="trend-head">
+        <h2>Exchange Trend</h2>
+        <div>
+          <button class="range-btn active" data-range="7" type="button">7D</button>
+          <button class="range-btn" data-range="30" type="button">30D</button>
+        </div>
+      </div>
+      <canvas id="trendCanvas" width="600" height="220" aria-label="Currency trend graph"></canvas>
+    </section>
+
+    <section class="card split">
+      <div>
+        <h2>Favorites</h2>
+        <div id="favoritesList" class="list"></div>
+      </div>
+      <div>
+        <h2>Recent Conversions</h2>
+        <div id="historyList" class="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="code.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
